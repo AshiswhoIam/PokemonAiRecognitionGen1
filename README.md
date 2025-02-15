@@ -7,3 +7,4 @@ Primary data source being used: https://www.kaggle.com/datasets/mikoajkolman/pok
 Cleaning out duplicates for now and adding personal images.
 
 So far 18/151 is done 2/13
+Update its 2/15 12:44am 31/151 is done
