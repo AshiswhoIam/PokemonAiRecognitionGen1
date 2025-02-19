@@ -12,3 +12,6 @@ Update its 2/16 12:09am 47/151 is done
 Update its 2/16 8:54 65/151 is done
 Update its 2/17 12:29am 73/151 is done
 Update its 2/17 8:05pm 90/151 is done
+Update its 2/17 10:58pm 95/151 is done
+Update its 2/18 6:20pm 114/151 is done
+Update its 2/18 11:14pm 132/151 is done 10 left means there is 9pokemon files missing.
