@@ -5,12 +5,14 @@ Step 1 Gathering & cleaning of data, for now the aim is to gather 100~ different
 
 Primary data source being used: https://www.kaggle.com/datasets/mikoajkolman/pokemon-images-first-generation17000-files
 Used https://www.kaggle.com/datasets/lantian773030/pokemonclassification/code for the 7missing pokemons
+Images added from cards, shows and google images.
 
 Nidoran Male and Female manually done.
 
 Cleaning out duplicates for now and adding personal images.
 Most of the duplicates have been deleted as well as some of the data augmented data.
-Images added from cards, shows and google images.
+Gifs have been cleared, might do some file conversion maybe.
+
 
 So far 18/151 is done 2/13
 Update its 2/15 12:44am 31/151 is done
