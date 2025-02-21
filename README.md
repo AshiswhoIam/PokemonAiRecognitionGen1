@@ -24,3 +24,5 @@ Update its 2/17 10:58pm 95/151 is done
 Update its 2/18 6:20pm 114/151 is done
 Update its 2/18 11:14pm 132/151 is done 10 left means there is 9pokemon files missing.
 Update 2/19 10:00pm 151/151 are done just need to go over each file convert the gifs, also labeled nidoran with M and F will have to take care of that after.
+
+Hitmonlee missing 1 image, squirtle had an extra.
