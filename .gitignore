@@ -2,3 +2,4 @@
 __pycache__/
 .env
 PokemonDataGen1/
+ProcessedPokemonDataGen1/
