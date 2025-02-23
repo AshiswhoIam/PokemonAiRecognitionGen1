@@ -1,6 +1,6 @@
 import os
 
-data_path = "PokemonDataGen1"  
+data_path = "ProcessedPokemonDataGen1"  
 
 #Array storage for folders that need fixing
 missing_img_folders = []
