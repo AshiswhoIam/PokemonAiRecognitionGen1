@@ -1,7 +1,24 @@
+import time
 import tensorflow as tf
-from tensorflow import keras
-from keras import layers, models
-normalization_layer = tf.keras.layers.Rescaling(1./255)
+from tensorflow.keras import layers, models 
+
+physical_devices = tf.config.list_physical_devices('GPU')
+if physical_devices:
+    for device in physical_devices:
+        tf.config.experimental.set_memory_growth(device, True)
+    
+    gpu_details = tf.config.experimental.get_device_details(physical_devices[0])
+    print("GPU detected:", physical_devices[0])
+    print("GPU details:", gpu_details)
+     #Logging device
+    tf.debugging.set_log_device_placement(True)
+else:
+    print("No GPU found CPU will be used.")
+
+# Manually normalize the images by dividing by 255
+def normalize_image(image, label): 
+    return image / 255.0, label
+
 
 dataset_path = "SplitProcessedPokemonDataGen1"
 
@@ -12,16 +29,16 @@ train_dataset = tf.keras.preprocessing.image_dataset_from_directory(
     batch_size=32,
     label_mode='int',
     shuffle=True
-).map(lambda x, y: (normalization_layer(x), y))
+).map(normalize_image)
 
 #Load Validation Data
-val_dataset = tf.keras.preprocessing.image_dataset_from_directory(
+validation_dataset = tf.keras.preprocessing.image_dataset_from_directory(
     dataset_path + '/validation',
     image_size=(224, 224),
     batch_size=32,
     label_mode='int',
     shuffle=False
-).map(lambda x, y: (normalization_layer(x), y))
+).map(normalize_image)
 
 #Load Test Data
 test_dataset = tf.keras.preprocessing.image_dataset_from_directory(
@@ -30,10 +47,10 @@ test_dataset = tf.keras.preprocessing.image_dataset_from_directory(
     batch_size=32,
     label_mode='int',
     shuffle=False
-).map(lambda x, y: (normalization_layer(x), y))
+).map(normalize_image)
 
 print(f"Train dataset: {train_dataset}")
-print(f"Validation dataset: {val_dataset}")
+print(f"Validation dataset: {validation_dataset}")
 print(f"Test dataset: {test_dataset}")
 
 # Checking if images are normalized
@@ -77,7 +94,7 @@ model.compile(optimizer=tf.keras.optimizers.Adam(learning_rate=0.0005),
 history = model.fit(
     train_dataset,
     epochs=20,
-    validation_data=val_dataset
+    validation_data=validation_dataset
 )
 
 #Model Accuracy
