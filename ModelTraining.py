@@ -1,6 +1,8 @@
 import time
 import tensorflow as tf
 from tensorflow.keras import layers, models 
+from tensorflow.keras import mixed_precision
+mixed_precision.set_global_policy('mixed_float16')
 
 physical_devices = tf.config.list_physical_devices('GPU')
 if physical_devices:
@@ -12,6 +14,8 @@ if physical_devices:
     print("GPU details:", gpu_details)
      #Logging device
     tf.debugging.set_log_device_placement(True)
+    print("Waiting for 3 seconds before starting training...")
+    time.sleep(3)
 else:
     print("No GPU found CPU will be used.")
 
@@ -26,7 +30,7 @@ dataset_path = "SplitProcessedPokemonDataGen1"
 train_dataset = tf.keras.preprocessing.image_dataset_from_directory(
     dataset_path + '/train',
     image_size=(224, 224),
-    batch_size=32,
+    batch_size=64,
     label_mode='int',
     shuffle=True
 ).map(normalize_image)
@@ -35,7 +39,7 @@ train_dataset = tf.keras.preprocessing.image_dataset_from_directory(
 validation_dataset = tf.keras.preprocessing.image_dataset_from_directory(
     dataset_path + '/validation',
     image_size=(224, 224),
-    batch_size=32,
+    batch_size=64,
     label_mode='int',
     shuffle=False
 ).map(normalize_image)
@@ -44,7 +48,7 @@ validation_dataset = tf.keras.preprocessing.image_dataset_from_directory(
 test_dataset = tf.keras.preprocessing.image_dataset_from_directory(
     dataset_path + '/test',
     image_size=(224, 224),
-    batch_size=32,
+    batch_size=64,
     label_mode='int',
     shuffle=False
 ).map(normalize_image)
@@ -93,7 +97,7 @@ model.compile(optimizer=tf.keras.optimizers.Adam(learning_rate=0.0005),
 #Train the model
 history = model.fit(
     train_dataset,
-    epochs=20,
+    epochs=1,
     validation_data=validation_dataset
 )
 
