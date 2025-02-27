@@ -2,6 +2,8 @@ import time
 import tensorflow as tf
 from tensorflow.keras import layers, models 
 from tensorflow.keras import mixed_precision
+import matplotlib.pyplot as plt
+from tensorflow.keras.callbacks import EarlyStopping
 mixed_precision.set_global_policy('mixed_float16')
 
 physical_devices = tf.config.list_physical_devices('GPU')
@@ -14,8 +16,6 @@ if physical_devices:
     print("GPU details:", gpu_details)
      #Logging device
     tf.debugging.set_log_device_placement(True)
-    print("Waiting for 3 seconds before starting training...")
-    time.sleep(3)
 else:
     print("No GPU found CPU will be used.")
 
@@ -63,7 +63,8 @@ image_batch, label_batch = next(iter(train_dataset))
 # Check min and max pixel values after normalization
 print("Min pixel value (after normalization):", tf.reduce_min(image_batch).numpy())
 print("Max pixel value (after normalization):", tf.reduce_max(image_batch).numpy())
-
+print("Waiting for 3 seconds before starting training...")
+time.sleep(3)
 
 #------------------------------------------------------------------------------------
 #CNN Model
@@ -80,27 +81,38 @@ model = tf.keras.Sequential([
     layers.Conv2D(256, (3, 3), activation='relu'),
     layers.MaxPooling2D(2, 2),
     layers.BatchNormalization(),
+
+    layers.Conv2D(512, (3, 3), activation='relu'),
+    layers.MaxPooling2D(2, 2),
+    layers.BatchNormalization(),
     
     #Fully con layers
     layers.Flatten(),
-    layers.Dense(256, activation='relu'),
+    layers.Dense(512, activation='relu'),
     layers.Dropout(0.5),  # Prevents overfitting
     #151 classes
     layers.Dense(151, activation='softmax')
 ])
 
 #Compile the model start with smaller learning rate for stability
-model.compile(optimizer=tf.keras.optimizers.Adam(learning_rate=0.0005),
+model.compile(optimizer=tf.keras.optimizers.Adam(learning_rate=0.0002),
               loss='sparse_categorical_crossentropy',
               metrics=['accuracy'])
 
 #Train the model
 history = model.fit(
     train_dataset,
-    epochs=1,
+    epochs=20,
+    verbose=1,
     validation_data=validation_dataset
 )
-
+plt.plot(history.history['loss'], label='Train Loss')
+plt.plot(history.history['val_loss'], label='Val Loss')
+plt.xlabel('Epoch')
+plt.ylabel('Loss')
+plt.legend()
+plt.title('Training vs Validation Loss')
+plt.show()
 #Model Accuracy
 test_loss, test_accuracy = model.evaluate(test_dataset)
 print(f"Test accuracy: {test_accuracy*100:.2f}%")
