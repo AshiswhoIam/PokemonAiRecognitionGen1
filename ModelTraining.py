@@ -89,9 +89,9 @@ model = tf.keras.Sequential([
     
     #Fully con layers
     layers.Flatten(),
-    layers.Dense(512, activation='relu', kernel_regularizer=regularizers.l2(0.01)),
+    layers.Dense(512, activation='relu', kernel_regularizer=regularizers.l2(0.02)),
     # Prevents overfitting
-    layers.Dropout(0.5),  
+    layers.Dropout(0.6),  
     #151 classes
     layers.Dense(151, activation='softmax')
 ])
