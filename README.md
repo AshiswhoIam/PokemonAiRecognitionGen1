@@ -35,6 +35,8 @@ Next making changes adding another layer 512 and lowering learning rate 0.0005->
 adding early stoppage
 
 
+train=93 v=48 test=51 for current model still some overfitting done val and test accuracy can be improved more soon.
+
 Tensorflow 2.4.0
 Python 3.7.16
 Cuda 11.0
