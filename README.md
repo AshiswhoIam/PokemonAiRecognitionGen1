@@ -31,11 +31,29 @@ Hitmonlee missing 1 image, squirtle had an extra.
 using 5epoch 3.71%
 with 10 epochs - > 9.9%
 
-Next making changes adding another layer 512 and lowering learning rate 0.0005->0.0002 + making it 20epochs OVERfitted
-adding early stoppage
+Keeping Track=>
+Stats 32batch, 4 cv layers,l2=0.005,lr=0.00005,drop = 0.4
+
+Current trial => Test accuracy: 43.40%
+Test Loss: 3.4019
+loss: 0.6550 - accuracy: 0.9936 - val_loss: 3.3664 - val_accuracy: 0.4428
 
 
-train=93 v=48 test=51 for current model still some overfitting done val and test accuracy can be improved more soon.
+
+Now we change and try =>
+Stats 64batch, 4 cv layers,l2=0.001,lr=0.0001,drop = 0.3 + extra dense layer
+
+loss: 0.7143 - accuracy: 0.9741 - val_loss: 2.8477 - val_accuracy: 0.5373
+Test accuracy: 53.07%
+Test Loss: 2.8312
+
+Now we change and try =>
+Stats 64batch,5 cv layers,l2=0.0005,lr=0.0002,drop = 0.2 + extra dense layer+convextra+lr schedeuler
+GOOD NEWS
+- loss: 0.2907 - accuracy: 0.9946 - val_loss: 1.9350 - val_accuracy: 0.6724
+Test accuracy: 64.19%
+Test Loss: 1.9604
+
 
 Tensorflow 2.4.0
 Python 3.7.16
