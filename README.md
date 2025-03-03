@@ -54,6 +54,19 @@ GOOD NEWS
 Test accuracy: 64.19%
 Test Loss: 1.9604
 
+Stoppped around 18/30
+
+
+Now we change and try =>
+From the previous try added 1 more dense layer, more patience adjusted Lr rate sonner
+
+
+- loss: 0.1854 - accuracy: 0.9997 - val_loss: 1.4380 - val_accuracy: 0.7135
+Test accuracy: 69.80%
+Test Loss: 1.4253
+
+Stoppped around 25/30 epoch
+
 
 Tensorflow 2.4.0
 Python 3.7.16
