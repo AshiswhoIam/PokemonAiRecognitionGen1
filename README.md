@@ -68,6 +68,29 @@ Test Loss: 1.4253
 Stoppped around 25/30 epoch
 
 
+
+Now we change and try =>
+1024->768 0.3 droupout  LReg to 0.001
+
+- loss: 0.3544 - accuracy: 0.9962 - val_loss: 1.5703 - val_accuracy: 0.7007
+
+Test accuracy: 68.83%
+Test Loss: 1.5818
+
+Now we change and try => 
+increase in dropoout to 0.4 and kernel 5x5 for 1st and 0.0001 lr
+
+loss: 0.7444 - accuracy: 0.9182 - val_loss: 1.6642 - val_accuracy: 0.6675
+Test accuracy: 66.75%
+Test Loss: 1.6762
+
+This is better model is learning better doing less overfitting less memo
+
+Now we change and try => 
+adding one more cv layer
+
+
+
 Tensorflow 2.4.0
 Python 3.7.16
 Cuda 11.0

@@ -72,7 +72,7 @@ time.sleep(5)
 #CNN Model
 model = tf.keras.Sequential([
     #64 because larger data set 3x3 kernel
-    layers.Conv2D(64, (3, 3), activation='relu', input_shape=(224, 224, 3)),
+    layers.Conv2D(64, (5, 5), activation='relu', input_shape=(224, 224, 3)),
     layers.BatchNormalization(),
     layers.MaxPooling2D(2, 2),
     
@@ -97,22 +97,22 @@ model = tf.keras.Sequential([
     #Fully con layers
     layers.Flatten(),
     #extra dense layer learn more feat.
-    layers.Dense(1024, activation='relu'),
-    layers.Dropout(0.2),
+    layers.Dense(768, activation='relu'),
+    layers.Dropout(0.4),
     #another extra dense layer
     layers.Dense(256, activation='relu'), 
     layers.BatchNormalization(),
-    layers.Dropout(0.2),
+    layers.Dropout(0.4),
     #og dense layer
-    layers.Dense(512, activation='relu', kernel_regularizer=regularizers.l2(0.0005)),
+    layers.Dense(512, activation='relu', kernel_regularizer=regularizers.l2(0.001)),
     #Prevents overfitting
-    layers.Dropout(0.2),  
+    layers.Dropout(0.4),  
     #151 classes
     layers.Dense(151, activation='softmax')
 ])
 
 #Compile the model start with smaller learning rate for stability
-model.compile(optimizer=tf.keras.optimizers.Adam(learning_rate=0.0002),
+model.compile(optimizer=tf.keras.optimizers.Adam(learning_rate=0.0001),
               loss='sparse_categorical_crossentropy',
               metrics=['accuracy'])
 
