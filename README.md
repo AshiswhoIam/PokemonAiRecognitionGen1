@@ -87,7 +87,7 @@ Test Loss: 1.6762
 This is better model is learning better doing less overfitting less memo
 
 Now we change and try => 
-adding one more cv layer
+adding one more cv layer512, learning rate to 0.0002 and 0.5 dropout, patience to 4 epoch to 40
 
 
 
