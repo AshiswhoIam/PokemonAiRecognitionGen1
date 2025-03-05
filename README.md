@@ -88,8 +88,29 @@ This is better model is learning better doing less overfitting less memo
 
 Now we change and try => 
 adding one more cv layer512, learning rate to 0.0002 and 0.5 dropout, patience to 4 epoch to 40
+- loss: 0.6883 - accuracy: 0.8831 - val_loss: 1.6740 - val_accuracy: 0.6512
+Test accuracy: 65.39%
+Test Loss: 1.6714
+
+Now we change and try => 
+
+epoch 45 , taking off 1 cv layer, increase learning to 0.0003  l2 is 0.0005
+
+- loss: 0.6691 - accuracy: 0.8637 - val_loss: 1.4780 - val_accuracy: 0.6790
+Test accuracy: 67.02%
+Test Loss: 1.4883
+
+Now we change and try => 
+
+drop 0.4, 50epochs, learning rate to 0.0002, 4layers this time nvm 4 layers way too low
 
 
+using .6
+
+ - loss: 0.8852 - accuracy: 0.7886 - val_loss: 1.5368 - val_accuracy: 0.6706
+
+Test accuracy: 65.17%
+Test Loss: 1.5684
 
 Tensorflow 2.4.0
 Python 3.7.16

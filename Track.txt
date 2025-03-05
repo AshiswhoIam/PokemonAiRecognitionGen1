@@ -1,0 +1,16 @@
+Keeping track of what each Results are properly
+
+1)
+
+Batch Size: 64, Learning Rate: 0.00009, L2 Regularization: 0.0005, Dropout Rate: 0.6, Epochs: 60, Layers 5  and 3 dense, 5x5kernel for first then 3x3
+
+(Very slow training)
+
+- loss: 0.8852 - accuracy: 0.7886 - val_loss: 1.5368 - val_accuracy: 0.6706
+
+Test accuracy: 65.17%
+Test Loss: 1.5684
+
+2)
+
+Batch Size: 64, Learning Rate: 0.0002, L2 Regularization: 0.0005, Dropout Rate: 0.5, Epochs: 50, Layers 5  and 3 dense, 5x5kernel for first then 3x3
