@@ -84,47 +84,48 @@ model = tf.keras.Sequential([
     layers.MaxPooling2D(2, 2),
     layers.BatchNormalization(),
 
-    layers.Conv2D(512, (3, 3), activation='relu'),
-    layers.MaxPooling2D(2, 2),
-    layers.BatchNormalization(),
-
-    layers.Conv2D(512, (3, 3), activation='relu'),
+    layers.Conv2D(256, (3, 3), activation='relu'),
     layers.BatchNormalization(),
     layers.MaxPooling2D(2, 2),
+    
+    layers.Conv2D(512, (3, 3), activation='relu'),
+    layers.BatchNormalization(),
+    layers.MaxPooling2D(2, 2),
 
-    
-    
     #Fully con layers
     layers.Flatten(),
+    #GlobalAveragePooling2D Layer
+    #layers.GlobalAveragePooling2D(),
+
     #extra dense layer learn more feat.
     layers.Dense(768, activation='relu'),
-    layers.Dropout(0.4),
+    layers.Dropout(0.5),
     #another extra dense layer
     layers.Dense(256, activation='relu'), 
     layers.BatchNormalization(),
-    layers.Dropout(0.4),
+    layers.Dropout(0.5),
     #og dense layer
     layers.Dense(512, activation='relu', kernel_regularizer=regularizers.l2(0.001)),
     #Prevents overfitting
-    layers.Dropout(0.4),  
+    layers.Dropout(0.5),  
     #151 classes
     layers.Dense(151, activation='softmax')
 ])
 
 #Compile the model start with smaller learning rate for stability
-model.compile(optimizer=tf.keras.optimizers.Adam(learning_rate=0.0001),
+model.compile(optimizer=tf.keras.optimizers.Adam(learning_rate= 0.0005),
               loss='sparse_categorical_crossentropy',
               metrics=['accuracy'])
 
 #stopping early to prevent overfitting
-early_stopping = EarlyStopping(monitor='val_loss', patience=5, restore_best_weights=True)
+early_stopping = EarlyStopping(monitor='val_loss', patience=3, restore_best_weights=True)
 #validation loss lr change
-lr_scheduler = ReduceLROnPlateau(monitor='val_loss', factor=0.5, patience=1, verbose=1)
+lr_scheduler = ReduceLROnPlateau(monitor='val_loss', factor=0.5, patience=2, verbose=1)
 
 #Train the model
 history = model.fit(
     train_dataset,
-    epochs=30,
+    epochs=55,
     verbose=1,
     validation_data=validation_dataset,
     callbacks=[early_stopping,lr_scheduler]

@@ -55,3 +55,10 @@ Test accuracy: 56.47%
 Test Loss: 1.9823
 
 6)
+Batch Size: 64, Learning Rate: 0.0005, L2 Regularization: 0.001, Dropout Rate: 0.5, Epochs: 50, Layers 6 and 3 dense, 5x5kernel for first then 3x3
+flatten
+
+- loss: 0.5953 - accuracy: 0.8909 - val_loss: 1.8616 - val_accuracy: 0.6132
+
+Test accuracy: 59.25%
+Test Loss: 1.8766
