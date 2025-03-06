@@ -62,3 +62,30 @@ flatten
 
 Test accuracy: 59.25%
 Test Loss: 1.8766
+
+
+7)
+Using augmented data this time more images 30000~
+Batch Size: 64, Learning Rate: 0.0005, L2 Regularization: 0.001, Dropout Rate: 0.4, Epochs: 50, Layers 5(64,128,256,512,512) and 2 dense(1024 512), 3x3kernel for first then 3x3
+flatten
+
+- loss: 0.3125 - accuracy: 0.9706 - val_loss: 1.8532 - val_accuracy: 0.6669
+
+Test accuracy: 66.68%
+Test Loss: 1.7856
+
+8)
+Using augmented data this time more images 30000~
+128 batch -> size 5x5
+
+- 117s 689ms/step - loss: 0.2531 - accuracy: 0.9856 - val_loss: 1.7003 - val_accuracy: 0.7013
+Test accuracy: 69.59%
+Test Loss: 1.6863
+
+33/50
+
+9)
+Using augmented data this time more images 30000~
+Batch Size: 64, Learning Rate: 0.0002, L2 Regularization: 0.001, Dropout Rate: 0.5, Epochs: 60, Layers 5(64,128,256,512,512) and 2 dense(1024 512), 3x3kernel for first then 3x3
+flatten
+

@@ -6,7 +6,7 @@ import random
 dataset_path = "ProcessedPokemonDataGen1"
 
 #splitted folders
-splitData_folder = "SplitProcessedPokemonDataGen1"
+splitData_folder = "SplitMoreProcessedPokemonDataGen1"
 
 train_ratio = 0.7  
 val_ratio = 0.15    

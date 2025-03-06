@@ -4,6 +4,9 @@ __pycache__/
 PokemonDataGen1/
 ProcessedPokemonDataGen1/
 SplitProcessedPokemonDataGen1/
+PokemonDataGen1Augmented/
+SplitMoreProcessedPokemonDataGen1/
+Models/
 Dexter_pokemon_Evenbetter.h5
 1.h5
 2.h5
