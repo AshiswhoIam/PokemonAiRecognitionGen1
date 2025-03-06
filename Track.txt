@@ -3,7 +3,7 @@ Keeping track of what each Results are properly
 1)
 
 Batch Size: 64, Learning Rate: 0.00009, L2 Regularization: 0.0005, Dropout Rate: 0.6, Epochs: 60, Layers 5  and 3 dense, 5x5kernel for first then 3x3
-
+flatten
 (Very slow training)
 
 - loss: 0.8852 - accuracy: 0.7886 - val_loss: 1.5368 - val_accuracy: 0.6706
@@ -11,6 +11,47 @@ Batch Size: 64, Learning Rate: 0.00009, L2 Regularization: 0.0005, Dropout Rate:
 Test accuracy: 65.17%
 Test Loss: 1.5684
 
+Stopped at 54/60 epochs 
+
 2)
 
 Batch Size: 64, Learning Rate: 0.0002, L2 Regularization: 0.0005, Dropout Rate: 0.5, Epochs: 50, Layers 5  and 3 dense, 5x5kernel for first then 3x3
+flatten
+- loss: 0.2826 - accuracy: 0.9725 - val_loss: 1.5136 - val_accuracy: 0.6976
+
+Test accuracy: 68.61%
+Test Loss: 1.5237
+
+Stopped at 38/50 epochs 
+
+3)
+
+Batch Size: 64, Learning Rate: 0.0003, L2 Regularization: 0.001, Dropout Rate: 0.4, Epochs: 50, Layers 5  and 3 dense, 5x5kernel for first then 3x3
+Changing the 512 to 256 and using global instead of flatten
+
+ - loss: 0.8752 - accuracy: 0.8201 - val_loss: 1.6896 - val_accuracy: 0.6450
+
+Test accuracy: 63.18%
+Test Loss: 1.7536
+
+50/50
+
+4)
+
+Batch Size: 64, Learning Rate: 0.0001, L2 Regularization: 0.0001, Dropout Rate: 0.3, Epochs: 50, Layers 5  and 3 dense, 5x5kernel for first then 3x3
+Removed 768 dense layers,global instead of flatten
+
+Cancelled this process was already way too overfitting early memorizing the data
+
+5)
+
+Batch Size: 64, Learning Rate: 0.0001, L2 Regularization: 0.0001, Dropout Rate: 0.3, Epochs: 55, Layers 4  and 3 dense, 3x3 kernel for first then 3x3
+,global instead of flatten
+
+
+- 57s 340ms/step - loss: 1.2943 - accuracy: 0.7113 - val_loss: 1.9187 - val_accuracy: 0.5863
+
+Test accuracy: 56.47%
+Test Loss: 1.9823
+
+6)
