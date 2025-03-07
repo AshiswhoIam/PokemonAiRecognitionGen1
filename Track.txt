@@ -104,4 +104,12 @@ Test accuracy: 65.07%
 Test Loss: 1.4937
 
 
- 11)
+ 11) This is model 9 with adjustments
+Using augmented data this time more images 30000~
+Batch Size: 64, Learning Rate: 0.0001, L2 Regularization: 0.001, Dropout Rate: 0.5, Epochs: 80, Layers 5(64,128,256,512,512) and 2 dense(1024 512), 3x3kernel for first then 3x3
+flatten added l2 regu on last cv layers 256 512 512 l2 of 0.0005 patience is 4.
+- 105s 316ms/step - loss: 0.6507 - accuracy: 0.9898 - val_loss: 1.8118 - val_accuracy: 0.7256
+Test accuracy: 73.08%
+Test Loss: 1.8220
+12)
+

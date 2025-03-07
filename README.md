@@ -16,9 +16,15 @@ Some Data augmentation was later done for more accuracy.
 Note: can probably get better results if data is more properly cropped.
 
 Currently During Model training data is still overfitting results getting better as more modifications done.
-So far the best model is of  72.64% accuracy model#9 was renamed to become main.
+So far the best model is of  73.08% accuracy model#11 was renamed to become main.
 Can View Track.txt for tryouts.
 
+List of things to do now:
+Classifcation oof each class f1 preci recall etc
+Confusion matrix
+Datasetvisual,Pixel intensity
+Tryout random image from internet like guessing game for the ai.
+Mybe more trials.
 
 Versions used for model training:
 Tensorflow 2.4.0

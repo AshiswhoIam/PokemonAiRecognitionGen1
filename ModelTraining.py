@@ -82,15 +82,15 @@ model = tf.keras.Sequential([
     layers.BatchNormalization(),
     layers.MaxPooling2D(2, 2),
     
-    layers.Conv2D(256, (3, 3), activation='relu'),
-    layers.MaxPooling2D(2, 2),
+    layers.Conv2D(256, (3, 3), activation='relu', kernel_regularizer=regularizers.l2(0.0005)),
     layers.BatchNormalization(),
+    layers.MaxPooling2D(2, 2),
 
-    layers.Conv2D(512, (3, 3), activation='relu'),
+    layers.Conv2D(512, (3, 3), activation='relu', kernel_regularizer=regularizers.l2(0.0005)),
     layers.BatchNormalization(),
     layers.MaxPooling2D(2, 2),
     
-    layers.Conv2D(512, (3, 3), activation='relu'),
+    layers.Conv2D(512, (3, 3), activation='relu', kernel_regularizer=regularizers.l2(0.0005)),
     layers.BatchNormalization(),
     layers.MaxPooling2D(2, 2),
 
@@ -115,7 +115,7 @@ model = tf.keras.Sequential([
 ])
 
 #Compile the model start with smaller learning rate for stability
-model.compile(optimizer=tf.keras.optimizers.Adam(learning_rate= 0.0002),
+model.compile(optimizer=tf.keras.optimizers.Adam(learning_rate= 0.0001),
               loss='sparse_categorical_crossentropy',
               metrics=['accuracy'])
 
@@ -129,7 +129,7 @@ checkpoint_callback = ModelCheckpoint(
 )
 
 #stopping early to prevent overfitting
-early_stopping = EarlyStopping(monitor='val_loss', patience=3, restore_best_weights=True)
+early_stopping = EarlyStopping(monitor='val_loss', patience=4, restore_best_weights=True)
 #validation loss lr change
 lr_scheduler = ReduceLROnPlateau(monitor='val_loss', factor=0.5, patience=2, min_lr=1e-6, verbose=1)
 
@@ -148,7 +148,7 @@ print(f"Resuming training from epoch {initial_epoch}")
 #Train the model
 history = model.fit(
     train_dataset,
-    epochs=60,
+    epochs=80,
     verbose=1,
     validation_data=validation_dataset,
     callbacks=[checkpoint_callback,early_stopping,lr_scheduler],
