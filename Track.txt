@@ -89,3 +89,19 @@ Using augmented data this time more images 30000~
 Batch Size: 64, Learning Rate: 0.0002, L2 Regularization: 0.001, Dropout Rate: 0.5, Epochs: 60, Layers 5(64,128,256,512,512) and 2 dense(1024 512), 3x3kernel for first then 3x3
 flatten
 
+- 104s 311ms/step - loss: 0.3024 - accuracy: 0.9713 - val_loss: 1.4470 - val_accuracy: 0.7238
+Test accuracy: 72.64%
+Test Loss: 1.4109
+
+10)
+Using augmented data this time more images 30000~
+Batch Size: 64, Learning Rate: 0.0001, L2 Regularization: 0.001, Dropout Rate: 0.6, Epochs: 70, Layers 4(64,128,256,x,512) and 2 dense(512 512), 3x3kernel for first then 3x3
+flatten
+
+
+ - loss: 0.4166 - accuracy: 0.8793 - val_loss: 1.4644 - val_accuracy: 0.6574
+Test accuracy: 65.07%
+Test Loss: 1.4937
+
+
+ 11)

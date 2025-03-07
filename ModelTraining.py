@@ -6,6 +6,8 @@ import matplotlib.pyplot as plt
 from tensorflow.keras.callbacks import EarlyStopping
 from tensorflow.keras import regularizers
 from tensorflow.keras.callbacks import ReduceLROnPlateau
+from tensorflow.keras.callbacks import ModelCheckpoint
+import os
 mixed_precision.set_global_policy('mixed_float16')
 
 physical_devices = tf.config.list_physical_devices('GPU')
@@ -26,7 +28,7 @@ def normalize_image(image, label):
     return image / 255.0, label
 
 
-dataset_path = "SplitProcessedPokemonDataGen1"
+dataset_path = "SplitMoreProcessedPokemonDataGen1"
 
 #Load Training Data
 train_dataset = tf.keras.preprocessing.image_dataset_from_directory(
@@ -72,7 +74,7 @@ time.sleep(5)
 #CNN Model
 model = tf.keras.Sequential([
     #64 because larger data set 3x3 kernel
-    layers.Conv2D(64, (5, 5), activation='relu', input_shape=(224, 224, 3)),
+    layers.Conv2D(64, (3, 3), activation='relu', input_shape=(224, 224, 3)),
     layers.BatchNormalization(),
     layers.MaxPooling2D(2, 2),
     
@@ -84,7 +86,7 @@ model = tf.keras.Sequential([
     layers.MaxPooling2D(2, 2),
     layers.BatchNormalization(),
 
-    layers.Conv2D(256, (3, 3), activation='relu'),
+    layers.Conv2D(512, (3, 3), activation='relu'),
     layers.BatchNormalization(),
     layers.MaxPooling2D(2, 2),
     
@@ -98,12 +100,12 @@ model = tf.keras.Sequential([
     #layers.GlobalAveragePooling2D(),
 
     #extra dense layer learn more feat.
-    layers.Dense(768, activation='relu'),
+    layers.Dense(1024, activation='relu'),
     layers.Dropout(0.5),
     #another extra dense layer
-    layers.Dense(256, activation='relu'), 
-    layers.BatchNormalization(),
-    layers.Dropout(0.5),
+    #layers.Dense(256, activation='relu'), 
+    #layers.BatchNormalization(),
+    #layers.Dropout(0.5),
     #og dense layer
     layers.Dense(512, activation='relu', kernel_regularizer=regularizers.l2(0.001)),
     #Prevents overfitting
@@ -113,22 +115,44 @@ model = tf.keras.Sequential([
 ])
 
 #Compile the model start with smaller learning rate for stability
-model.compile(optimizer=tf.keras.optimizers.Adam(learning_rate= 0.0005),
+model.compile(optimizer=tf.keras.optimizers.Adam(learning_rate= 0.0002),
               loss='sparse_categorical_crossentropy',
               metrics=['accuracy'])
+
+
+checkpoint_callback = ModelCheckpoint(
+    'model_checkpoint.h5',  
+    save_best_only=True,   
+    monitor='val_loss',   
+    save_weights_only=False,
+    verbose=1             
+)
 
 #stopping early to prevent overfitting
 early_stopping = EarlyStopping(monitor='val_loss', patience=3, restore_best_weights=True)
 #validation loss lr change
-lr_scheduler = ReduceLROnPlateau(monitor='val_loss', factor=0.5, patience=2, verbose=1)
+lr_scheduler = ReduceLROnPlateau(monitor='val_loss', factor=0.5, patience=2, min_lr=1e-6, verbose=1)
+
+initial_epoch = 0  
+if os.path.exists('model_checkpoint.h5'):
+    print("Loading model from checkpoint...")
+    model = tf.keras.models.load_model('model_checkpoint.h5')
+    
+    if model.history and 'loss' in model.history.history:
+        initial_epoch = len(model.history.history['loss'])
+    else:
+        initial_epoch = 0
+
+print(f"Resuming training from epoch {initial_epoch}")
 
 #Train the model
 history = model.fit(
     train_dataset,
-    epochs=55,
+    epochs=60,
     verbose=1,
     validation_data=validation_dataset,
-    callbacks=[early_stopping,lr_scheduler]
+    callbacks=[checkpoint_callback,early_stopping,lr_scheduler],
+    initial_epoch=initial_epoch 
 
 )
 plt.plot(history.history['loss'], label='Train Loss')
