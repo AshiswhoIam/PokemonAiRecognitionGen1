@@ -119,5 +119,7 @@ flatten added l2 regu on last cv layers 256 512 512 l2 of 0.0005 patience is 4.
 Test accuracy: 65.56%
 Test Loss: 1.7404
 
-13)
-
+13)Redid 11 with faster learning rate and different augmented data set.
+- loss: 0.5758 - accuracy: 0.9132 - val_loss: 1.4684 - val_accuracy: 0.7550
+Test accuracy: 73.10%
+Test Loss: 1.4246

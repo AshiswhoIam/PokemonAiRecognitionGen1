@@ -8,6 +8,8 @@ PokemonDataGen1Augmented/
 SplitMoreProcessedPokemonDataGen1/
 ProcessedPokemonDataGen1NewAug/
 SplitNewMoreProcessedPokemonDataGen1/
+SplitNewAugMoreProcessedPokemonDataGen1/
+FullSplitAugPokemonDataGen1/
 Models/
 Dexter_PokemonGen1Ai.h5
 model_checkpoint.h5

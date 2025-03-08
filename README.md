@@ -16,7 +16,7 @@ Some Data augmentation was later done for more accuracy.
 Note: can probably get better results if data is more properly cropped.
 
 Currently During Model training data is still overfitting results getting better as more modifications done.
-So far the best model is of  73.08% accuracy model#11 was renamed to become main.
+So far the best model is of  73.18% accuracy model#11 was renamed to become main.
 Can View Track.txt for tryouts.
 
 List of things to do now:
