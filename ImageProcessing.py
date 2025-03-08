@@ -3,7 +3,7 @@ import cv2
 import numpy as np
 
 #orignal data
-og_folder = "PokemonDataGen1Augmented"
+og_folder = "PokemonDataGen1"
 processed_folder = "ProcessedPokemonDataGen1"
 
 #Creating folder if not exisiting yet

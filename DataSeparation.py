@@ -3,14 +3,14 @@ import shutil
 import random
 
 #processed imgs
-dataset_path = "ProcessedPokemonDataGen1"
+dataset_path = "ProcessedPokemonDataGen1NewAug"
 
 #splitted folders
-splitData_folder = "SplitMoreProcessedPokemonDataGen1"
+splitData_folder = "SplitNewMoreProcessedPokemonDataGen1"
 
-train_ratio = 0.7  
-val_ratio = 0.15    
-test_ratio = 0.15
+train_ratio = 0.8  
+val_ratio = 0.1    
+test_ratio = 0.1
 
 #check if existing train val test
 for split in ["train", "validation", "test"]:

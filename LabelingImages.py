@@ -45,7 +45,7 @@ def get_pokemon_info(name):
         return None, None
 
 
-data_path = "ProcessedPokemonDataGen1"
+data_path = "ProcessedPokemonDataGen1NewAug"
 
 #image counter
 img_index = 1  

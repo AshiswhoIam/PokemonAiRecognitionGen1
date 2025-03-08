@@ -6,7 +6,7 @@ from PIL import Image, ImageEnhance
 import matplotlib.pyplot as plt
 
 dataset_path = 'PokemonDataGen1' 
-augmented_folder_path = 'PokemonDataGen1Augmented' 
+augmented_folder_path = 'ProcessedPokemonDataGen1NewAug' 
 
 #Create folder if it doesn't exist
 if not os.path.exists(augmented_folder_path):
@@ -26,7 +26,7 @@ def augment_image(image):
     
     #Extreme Brightness
     enhancer = ImageEnhance.Brightness(image)
-    brightness_factor = random.choice([0.2, 1.8])
+    brightness_factor = random.choice([0.6, 1.4])
     image = enhancer.enhance(brightness_factor)
 
     #Random rotation between -30 and +30 degrees
