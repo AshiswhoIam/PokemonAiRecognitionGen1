@@ -20,11 +20,10 @@ So far the best model is of  73.18% accuracy model#11 was renamed to become main
 Can View Track.txt for tryouts.
 
 List of things to do now:
-Classifcation oof each class f1 preci recall etc
-Confusion matrix
-Datasetvisual,Pixel intensity
 Tryout random image from internet like guessing game for the ai.
 Mybe more trials.
+
+Good progress being made so far from 11 ->13, model 11 only ided 100pokemons now model 13 is only missing 10
 
 Versions used for model training:
 Tensorflow 2.4.0
