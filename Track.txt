@@ -123,3 +123,10 @@ Test Loss: 1.7404
 - loss: 0.5758 - accuracy: 0.9132 - val_loss: 1.4684 - val_accuracy: 0.7550
 Test accuracy: 73.10%
 Test Loss: 1.4246
+
+14)same 11 model
+Using weights and changing l2 to 0.0008
+Test accuracy: 70.62%
+Test Loss: 1.5227
+
+15)
