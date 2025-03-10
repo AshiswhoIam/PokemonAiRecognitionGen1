@@ -130,3 +130,21 @@ Test accuracy: 70.62%
 Test Loss: 1.5227
 
 15)
+Added proper Weight classes with cap and reverted l2 and added l2 to 2nd cv layer
+- loss: 0.3342 - accuracy: 0.9489 - val_loss: 1.2016 - val_accuracy: 0.7606
+Test accuracy: 75.74%
+Test Loss: 1.1877
+
+Much slower training at the start still overfitting, classification is still worse than my best model
+
+16)
+addding a 256 layer 
+Seems overfitting went up doing this 
+The overall classfication is better
+- loss: 0.3703 - accuracy: 0.9979 - val_loss: 1.4757 - val_accuracy: 0.7805
+Test accuracy: 77.30%
+Test Loss: 1.4955
+
+17)
+
+

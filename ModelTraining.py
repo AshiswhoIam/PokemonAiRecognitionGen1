@@ -78,7 +78,7 @@ model = tf.keras.Sequential([
     layers.BatchNormalization(),
     layers.MaxPooling2D(2, 2),
     
-    layers.Conv2D(128, (3, 3), activation='relu'),
+    layers.Conv2D(128, (3, 3), activation='relu', kernel_regularizer=regularizers.l2(0.0005)),
     layers.BatchNormalization(),
     layers.MaxPooling2D(2, 2),
     
@@ -86,10 +86,14 @@ model = tf.keras.Sequential([
     layers.BatchNormalization(),
     layers.MaxPooling2D(2, 2),
 
-    layers.Conv2D(512, (3, 3), activation='relu', kernel_regularizer=regularizers.l2(0.0005)),
+    layers.Conv2D(256, (3, 3), activation='relu', kernel_regularizer=regularizers.l2(0.0005)),
     layers.BatchNormalization(),
     layers.MaxPooling2D(2, 2),
     
+    layers.Conv2D(512, (3, 3), activation='relu', kernel_regularizer=regularizers.l2(0.0005)),
+    layers.BatchNormalization(),
+    layers.MaxPooling2D(2, 2),
+
     layers.Conv2D(512, (3, 3), activation='relu', kernel_regularizer=regularizers.l2(0.0005)),
     layers.BatchNormalization(),
     layers.MaxPooling2D(2, 2),
@@ -148,7 +152,7 @@ print(f"Resuming training from epoch {initial_epoch}")
 #Train the model
 history = model.fit(
     train_dataset,
-    epochs=80,
+    epochs=100,
     verbose=1,
     validation_data=validation_dataset,
     callbacks=[checkpoint_callback,early_stopping,lr_scheduler],

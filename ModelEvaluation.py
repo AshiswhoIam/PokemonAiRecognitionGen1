@@ -4,7 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # Load model
-model = tf.keras.models.load_model('Dexter_PokemonGen1Ai.h5')
+model = tf.keras.models.load_model('16.h5')
 
 dataset_path = "FullSplitAugPokemonDataGen1"
 test_dataset = tf.keras.preprocessing.image_dataset_from_directory(
