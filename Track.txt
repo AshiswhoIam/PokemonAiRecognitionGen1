@@ -137,7 +137,7 @@ Test Loss: 1.1877
 
 Much slower training at the start still overfitting, classification is still worse than my best model
 
-16)
+16)(current best) 3/9/2025
 addding a 256 layer 
 Seems overfitting went up doing this 
 The overall classfication is better
@@ -146,5 +146,32 @@ Test accuracy: 77.30%
 Test Loss: 1.4955
 Stopped at epoch 71
 17)
+Same as 16 just changed lowered the dense layers, and lower lr a bit seems about the same results
+classification is 
+- loss: 0.5174 - accuracy: 0.9940 - val_loss: 1.7406 - val_accuracy: 0.7785
+Test accuracy: 76.51%
+Test Loss: 1.7241
+
+Classification was slightly better than 16 by reducing dense layers will keep in mind not sure if bc lr or dense layer.
+
+18)
+0.6dropout changes to see seems to be about the same again as well.
+classification is 
+forgot to track loss and acc about the same tho
+Test accuracy: 76.80%
+Test Loss: 1.5628
+
+Classification was worse than 17
 
 
+19)
+using batch norm before active relu following model 16
+Didnt seem to do much. will check classfication -HORRIBLE
+- loss: 0.5223 - accuracy: 0.9797 - val_loss: 1.5177 - val_accuracy: 0.7798
+Test accuracy: 75.91%
+Test Loss: 1.5187
+
+20)
+
+going to try 2 more.
+kernel changes, and 512 more
