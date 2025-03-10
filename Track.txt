@@ -144,7 +144,7 @@ The overall classfication is better
 - loss: 0.3703 - accuracy: 0.9979 - val_loss: 1.4757 - val_accuracy: 0.7805
 Test accuracy: 77.30%
 Test Loss: 1.4955
-
+Stopped at epoch 71
 17)
 
 
