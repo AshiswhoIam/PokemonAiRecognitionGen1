@@ -86,7 +86,7 @@ model = tf.keras.Sequential([
     layers.BatchNormalization(),
     layers.MaxPooling2D(2, 2),
 
-    layers.Conv2D(256, (3, 3), activation='relu', kernel_regularizer=regularizers.l2(0.0005)),
+    layers.Conv2D(512, (3, 3), activation='relu', kernel_regularizer=regularizers.l2(0.0005)),
     layers.BatchNormalization(),
     layers.MaxPooling2D(2, 2),
     
@@ -119,7 +119,7 @@ model = tf.keras.Sequential([
 ])
 
 #Compile the model start with smaller learning rate for stability
-model.compile(optimizer=tf.keras.optimizers.Adam(learning_rate= 0.001),
+model.compile(optimizer=tf.keras.optimizers.Adam(learning_rate= 0.0008),
               loss='sparse_categorical_crossentropy',
               metrics=['accuracy'])
 

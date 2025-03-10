@@ -172,6 +172,13 @@ Test accuracy: 75.91%
 Test Loss: 1.5187
 
 20)
+replaced 256 with a 512 and lowered learn rate a bit
+this resulted in higher val acc
+As for classfication it
 
-going to try 2 more.
-kernel changes, and 512 more
+- loss: 0.2222 - accuracy: 0.9991 - val_loss: 1.1790 - val_accuracy: 0.8113
+epoc76
+Test accuracy: 80.24%
+Test Loss: 1.1707
+21)
+kernel changes, 
