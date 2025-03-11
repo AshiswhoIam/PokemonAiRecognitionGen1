@@ -174,11 +174,26 @@ Test Loss: 1.5187
 20)
 replaced 256 with a 512 and lowered learn rate a bit
 this resulted in higher val acc
-As for classfication it
+As for classfication it was slightly overall better. but it did seem to differ in terms of classes ups and downs b/w diff pokemons
 
 - loss: 0.2222 - accuracy: 0.9991 - val_loss: 1.1790 - val_accuracy: 0.8113
 epoc76
 Test accuracy: 80.24%
 Test Loss: 1.1707
 21)
-kernel changes, 
+kernel changes, 5x5 on 128 layer
+Seems about the same acc,
+as for classficiation ~ slightly worse for precision ,f1
+- loss: 0.2424 - accuracy: 0.9997 - val_loss: 1.1403 - val_accuracy: 0.8132
+Test accuracy: 79.98%
+Test Loss: 1.1403
+22)
+128 256 512x4 the minimal upgrades take a while the later epochs
+Accuracy dropped a bit, The classification less than model 20 about same tho
+- accuracy: 0.9993 - val_loss: 1.2589 - val_accuracy: 0.7970
+Test accuracy: 78.33%
+Test Loss: 1.2713
+
+takes too long 100thepoch
+23)
+I think I'm going to clean more data of duplicates,cropping and check for blurs and then reaugmnet.
