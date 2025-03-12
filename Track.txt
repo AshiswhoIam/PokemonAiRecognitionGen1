@@ -205,3 +205,16 @@ Seems the accuracy went up model is still overfitting, as for classfication
 Test accuracy: 90.16%
 Test Loss: 0.5160
 epoch at 100/100 could go more
+
+24)
+Checking a 1024 instead of a 512
+classifiation is a bit better 
+I can prob stop at epoch 50
+
+- loss: 0.1418 - accuracy: 0.9992 - val_loss: 0.5781 - val_accuracy: 0.8962
+Test accuracy: 89.76%
+Test Loss: 0.5511
+
+stopped epoch 70.
+25)
+Im thinking lower lr and 32 batches this time.

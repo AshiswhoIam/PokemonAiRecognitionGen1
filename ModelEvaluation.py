@@ -4,7 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # Load model
-model = tf.keras.models.load_model('Dexter_PokemonGen1Ai23.h5')
+model = tf.keras.models.load_model('Dexter_pokemon_model24.h5')
 
 dataset_path = "SplitTryThisSetPokemonGen1"
 test_dataset = tf.keras.preprocessing.image_dataset_from_directory(
@@ -40,5 +40,5 @@ plt.ylabel("True Label")
 plt.title("Confusion Matrix")
 plt.xticks(ticks=np.arange(len(test_dataset.class_names)), labels=test_dataset.class_names, rotation=90, fontsize=6)
 plt.yticks(ticks=np.arange(len(test_dataset.class_names)), labels=test_dataset.class_names, fontsize=6)
-plt.savefig("confusion_matrix.png", dpi=300, bbox_inches='tight')
+
 plt.show()
