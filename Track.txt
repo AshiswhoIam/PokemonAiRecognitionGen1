@@ -196,4 +196,4 @@ Test Loss: 1.2713
 
 takes too long 100thepoch
 23)
-I think I'm going to clean more data of duplicates,cropping and check for blurs and then reaugmnet.
+For model 23 same hyperparameters as model 20 with lower lr and cv etc same + new data set of augmented images 45k~ this time.

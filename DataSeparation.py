@@ -3,10 +3,10 @@ import shutil
 import random
 
 #processed imgs
-dataset_path = "ProcessedPokemonDataGen1NewAug"
+dataset_path = "TryThisSetPokemonGen1"
 
 #splitted folders
-splitData_folder = "SplitNewMoreProcessedPokemonDataGen1"
+splitData_folder = "SplitTryThisSetPokemonGen1"
 
 train_ratio = 0.8  
 val_ratio = 0.1    

@@ -28,7 +28,7 @@ def normalize_image(image, label):
     return image / 255.0, label
 
 
-dataset_path = "FullSplitAugPokemonDataGen1"
+dataset_path = "TryThisSetPokemonGen1"
 
 #Load Training Data
 train_dataset = tf.keras.preprocessing.image_dataset_from_directory(
@@ -119,7 +119,7 @@ model = tf.keras.Sequential([
 ])
 
 #Compile the model start with smaller learning rate for stability
-model.compile(optimizer=tf.keras.optimizers.Adam(learning_rate= 0.0008),
+model.compile(optimizer=tf.keras.optimizers.Adam(learning_rate= 0.0005),
               loss='sparse_categorical_crossentropy',
               metrics=['accuracy'])
 
