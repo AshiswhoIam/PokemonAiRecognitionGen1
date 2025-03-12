@@ -28,7 +28,7 @@ def normalize_image(image, label):
     return image / 255.0, label
 
 
-dataset_path = "TryThisSetPokemonGen1"
+dataset_path = "SplitTryThisSetPokemonGen1"
 
 #Load Training Data
 train_dataset = tf.keras.preprocessing.image_dataset_from_directory(
