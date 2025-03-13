@@ -233,3 +233,10 @@ Test Loss: 0.6267
 60epochs
 27)
 Im thinking lower lr and 32 batches this time just to check
+- loss: 0.2665 - accuracy: 0.9981 - val_loss: 0.7213 - val_accuracy: 0.8969
+Epoch 00060: val_loss improved from 0.73440 to 0.72128, saving model to model_checkpoint.h5
+
+Test accuracy: 89.65%
+Test Loss: 0.7171
+
+Classification the overall acc 0.4 better the precision got down 1-2%
