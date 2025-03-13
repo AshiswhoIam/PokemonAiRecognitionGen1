@@ -217,4 +217,19 @@ Test Loss: 0.5511
 
 stopped epoch 70.
 25)
-Im thinking lower lr and 32 batches this time.
+For this one lowered lr and replaced another 512 with 1024
+The classifiation was slightly lower it seems.
+- loss: 0.1955 - accuracy: 0.9996 - val_loss: 0.6119 - val_accuracy: 0.8953
+Test accuracy: 89.92%
+Test Loss: 0.5860
+epoch stopped at 70
+Model still slightly overfitting.
+26)
+doubled Regularization
+Classification was
+- loss: 0.1987 - accuracy: 0.9992 - val_loss: 0.6425 - val_accuracy: 0.8964
+Test accuracy: 89.85%
+Test Loss: 0.6267
+60epochs
+27)
+Im thinking lower lr and 32 batches this time just to check
