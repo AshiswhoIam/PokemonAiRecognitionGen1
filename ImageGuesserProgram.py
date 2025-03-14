@@ -2,7 +2,7 @@ import os
 import numpy as np
 import tensorflow as tf
 import matplotlib.pyplot as plt
-from PIL import Image, ImageDraw, ImageFont
+from PIL import Image
 import tkinter as tk
 from tkinter import filedialog
 import requests
@@ -38,13 +38,33 @@ def fetch_pokemon_info(pokemon):
         height = data['height'] / 10 
         weight = data['weight'] / 10 
         sprite_url = data['sprites']['front_default'] 
+        species_url = data['species']['url']
+        species_response = requests.get(species_url)
+        #Fetch Habitat info
+        habitat = "Unknown"
+        if species_response.status_code == 200:
+            species_data = species_response.json()
+            if 'habitat' in species_data and species_data['habitat']:
+                habitat = species_data['habitat']['name'].capitalize()
+            
+        #Fetch Flavour Text aka Pokédex Description
+            for entry in species_data['flavor_text_entries']:
+                if entry['language']['name'] == 'en':
+                    flavor_text = entry['flavor_text']
+                    break
+
+        flavor_text = flavor_text.replace("\n", " ")
+        flavor_text = ' '.join(flavor_text.split())
         return {
             "Name": pokemon.capitalize(),
             "Types": types,
             "Height": f"{height} m",
             "Weight": f"{weight} kg",
-            "Sprite": sprite_url
+            "Sprite": sprite_url,
+            "Habitat": habitat,
+            "Flavour Text": flavor_text
         }
+    
     else:
         return None
 
@@ -62,43 +82,23 @@ img_reformed=reform_image(user_image_path)
 prediction=model.predict(img_reformed)
 predict_idx=np.argmax(prediction,axis=1)[0]
 predicted_pokemon=pokemon_classes[predict_idx]
-
-print(f"\nThe predicted Pokémon is: {predicted_pokemon}")
-print(f"\n{predicted_pokemon} has the following attributes:")
-
-
 #fetch info
 pokemon_info = fetch_pokemon_info(predicted_pokemon)
 
-img_display=Image.open(user_image_path).convert("RGB")
+print(f"\nThe predicted Pokémon is: {predicted_pokemon}")
+print(f"\n{predicted_pokemon} has the following attributes:\n"
+      f"Name: {pokemon_info['Name']}\n"
+      f"Types: {pokemon_info['Types']}\n"
+      f"Height: {pokemon_info['Height']}\n"
+      f"Weight: {pokemon_info['Weight']}\n"
+      f"Habitat: {pokemon_info['Habitat']}\n"
+      f"Flavour Text: {pokemon_info['Flavour Text']}")
 
-fig, ax = plt.subplots(figsize=(6, 6))
-ax.imshow(img_display)
-ax.axis("off")
-ax.set_title(f"Predicted: {predicted_pokemon}", fontsize=14, fontweight="bold")
+
+img_display=Image.open(user_image_path).convert("RGB")
 
 #Information display
 if pokemon_info:
-    info_text = f"Name: {pokemon_info['Name']}\n" \
-                f"Types: {pokemon_info['Types']}\n" \
-                f"Height: {pokemon_info['Height']}\n" \
-                f"Weight: {pokemon_info['Weight']}"
-
-    #Draw the info on the image
-    draw = ImageDraw.Draw(img_display)
-    try:
-        font = ImageFont.truetype("arial.ttf", 16)
-    except IOError:
-        font = ImageFont.load_default()
-
-    text_position = (10, 10)
-    text_color = (255, 255, 255) 
-
-    #Text pred display
-    text_bg_position = (5, 5, 230, 80)
-    draw.rectangle(text_bg_position, fill=(0, 0, 0, 180))
-    draw.text(text_position, info_text, fill=text_color, font=font)
-
     #Sprite display 
     sprite_url = pokemon_info.get("Sprite")
     if sprite_url:
