@@ -6,7 +6,7 @@ from PIL import Image
 import tkinter as tk
 from tkinter import filedialog
 import requests
-
+import cv2
 root = tk.Tk()
 root.withdraw()
 
@@ -68,13 +68,13 @@ def fetch_pokemon_info(pokemon):
     else:
         return None
 
-#just pre process image given
-def reform_image(path,size=(224,224)):
-    image=Image.open(path).convert("RGB")
-    image=image.resize(size)
-    image_arr=np.array(image)/255.0
-    image_arr=np.expand_dims(image_arr,axis=0)
-    return image_arr
+#had to change using cv2
+def reform_image(path, size=(224, 224)):
+    image = cv2.imread(path)
+    image = cv2.resize(image, size)
+    image = image / 255.0
+    image = np.expand_dims(image, axis=0)
+    return image
 
 img_reformed=reform_image(user_image_path)
 
@@ -94,8 +94,9 @@ print(f"\n{predicted_pokemon} has the following attributes:\n"
       f"Habitat: {pokemon_info['Habitat']}\n"
       f"Flavour Text: {pokemon_info['Flavour Text']}")
 
-
-img_display=Image.open(user_image_path).convert("RGB")
+#need the bgr since training data was like can change later.
+img_cv = cv2.imread(user_image_path)
+img_display = cv2.cvtColor(img_cv, cv2.COLOR_BGR2RGB)
 
 #Information display
 if pokemon_info:
